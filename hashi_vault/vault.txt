@@ -1,0 +1,14 @@
+Unseal Key 1: ACPNyKy3KPODaxuX4h90rFBK0lVN6NF15ro1azC6MnY+
+Unseal Key 2: qzjDHkDKQB4nvxXCIwUAdhvg02/pvbTe9cKtx2tQZxM6
+Unseal Key 3: IUeaGUdmrM07Mk1bddSf/5/1E5v3cxtJZuAFnLyyZPkb
+Unseal Key 4: dpStxFCEYxjVe5Yie/LngOl9Dj/a6TsM49OsiAKVm7vT
+Unseal Key 5: E9KZQkfonULEw0mn17PZhTSi8DoGMcsohR7TaSZsc+me
+
+Initial Root Token: s.ZjoPws8sKHTPPEKSp7tdybId
+
+
+
+CSI
+helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+helm repo update
+helm install --namespace vault csi secrets-store-csi-driver/secrets-store-csi-driver
