@@ -1,0 +1,106 @@
+nameOverride: ""
+fullnameOverride: "open-app"
+
+application:
+  reloader: false
+  replicaCount: 2
+  revisionHistoryLimit: 2
+  podAnnotations: {}
+  imagePullSecrets: {}
+  image:
+    repository: nginx
+    pullPolicy: IfNotPresent
+    tag: ""
+  probes:
+    livenessProbe:
+      httpGet:
+        path: /
+        port: http
+    readinessProbe:
+      httpGet:
+        path: /
+        port: http
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+service:
+  type: ClusterIP
+  port: 89
+  name: "proxy"
+  nodePort: ""
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    certmanager.k8s.io/cluster-issuer: monitoring-issuer
+  hosts:
+    - host: app.cluster.local
+      paths:
+        - path: /
+          pathType: PrefixS
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+conf:
+  default: |
+    server {
+      listen       80;
+      server_name  localhost;
+
+      location / {
+          root   /usr/local/openresty/nginx/html;
+          index  index.html index.htm;
+      }
+
+      error_page   500 502 503 504  /50x.html;
+      location = /50x.html {
+          root   /usr/local/openresty/nginx/html;
+      }
+    }
+
+
+html:
+  -
+    name: index.html
+    data: |-
+      <html>
+          <head>
+              <title>Тестовая страница</title>
+              <meta charset="UTF-8">
+          </head>
+          <body>
+            <h1>Тестовая страница</h1>
+            <p>Привет %username%</p>
+          </body>
+      </html>
+  -
+    name: 50x.html
+    data: |-
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+      <meta content="utf-8" http-equiv="encoding">
+      <title>Error</title>
+      <style>
+          body {
+              width: 35em;
+              margin: 0 auto;
+              font-family: Tahoma, Verdana, Arial, sans-serif;
+          }
+      </style>
+      </head>
+      <body>
+      <h1>An error occurred.</h1>
+      <p>Sorry, the page you are looking for is currently unavailable.<br/>
+      Please try again later.</p>
+      </body>
+      </html>
