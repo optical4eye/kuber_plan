@@ -49,3 +49,16 @@ Selector labels
 app.kubernetes.io/name: {{ include "openresty-art.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Create the image path
+*/}}
+{{- define "openresty-art.image" -}}
+{{- with .Values.application.image -}}
+{{ if .tag }}
+{{- printf "%s:%s" .repository .tag -}}
+{{ else }}
+{{- printf "%s:%s" .repository "latest" -}}
+{{- end }}
+{{- end }}
+{{- end }}

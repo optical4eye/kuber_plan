@@ -3,8 +3,8 @@ fullnameOverride: "open-app"
 
 application:
   reloader: false
-  replicaCount: 2
-  revisionHistoryLimit: 2
+  replicaCount: 1
+  revisionHistoryLimit: 1
   podAnnotations: {}
   imagePullSecrets: {}
   image:
