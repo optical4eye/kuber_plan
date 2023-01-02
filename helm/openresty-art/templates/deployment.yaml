@@ -20,8 +20,10 @@ spec:
     metadata:
       labels:
         {{- include "openresty-art.selectorLabels" . | nindent 8 }}
-      {{- with .Values.application.podAnnotations }}
       annotations:
+        htmlchecksum: {{ include (print $.Template.BasePath "/configmap-conf.yaml") . | sha256sum }}
+        confchecksum: {{ include (print $.Template.BasePath "/configmap-html.yaml") . | sha256sum }}
+      {{- with .Values.application.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:

@@ -8,7 +8,7 @@ helm create openresty-art
 ```
 helm template app  ./openresty-art/ > tets_deploy.yml
 ```
-### Установить chart
+### Установить chart из локальной дирректории
 ```
 helm install open-app --create-namespace --namespace open-app ./openresty-art/
 ```
@@ -25,5 +25,6 @@ helm repo index . --url https://raw.githubusercontent.com/optical4eye/kuber_plan
 helm repo add openresty-art https://raw.githubusercontent.com/optical4eye/kuber_plan/main/helm/chart
 helm repo update
 helm repo list
-helm search repo | grep openresty-art
+helm search repo --versions | grep openresty-art
+helm list --all-namespaces
 ```
