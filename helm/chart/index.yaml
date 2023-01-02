@@ -3,13 +3,13 @@ entries:
   openresty-art:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-01-02T15:42:43.581287258+03:00"
+    created: "2023-01-02T15:46:20.662934044+03:00"
     description: My openresty app
-    digest: 6226e999de1a62e82b63fda60b4a371641533c0939e52d1b5d5cdb1c9680e14b
+    digest: dda7c72182d1dfcca1a1cb70f99eb6168437f6d8fa77f6a72fd4188693d9b2e8
     kubeVersion: '>= 1.19.0'
     name: openresty-art
     type: application
     urls:
     - https://raw.githubusercontent.com/optical4eye/kuber_plan/main/helm/chart/openresty-art-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-02T15:42:43.57857226+03:00"
+generated: "2023-01-02T15:46:20.661933258+03:00"

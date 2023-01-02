@@ -43,7 +43,7 @@ ingress:
     - host: app.cluster.local
       paths:
         - path: /
-          pathType: PrefixS
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
