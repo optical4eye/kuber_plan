@@ -11,7 +11,7 @@ victoria-metrics-single:
       selfScrapeInterval: "15s"
       loggerLevel: "INFO"
     persistentVolume:
-      storageClass: "managed-nfs-storage"
+      storageClass: "nfs-client"
       size: "10Gi"
     resources:
       requests:
@@ -25,17 +25,16 @@ victoria-metrics-single:
       annotations:
         certmanager.k8s.io/cluster-issuer: monitoring-issuer
       hosts:
-        - name: "vm.kryukov.local"
+        - name: "vm.cluster.local"
           path: /
           port: 9090
       tls:
         - secretName: "mon-tls"
           hosts:
-            - vm.kryukov.local
-      ingressClassName: system-ingress
+            - vm.cluster.local
+      ingressClassName: nginx
     statefulSet:
       enabled: true
       podManagementPolicy: Parallel
     scrape:
       enabled: false
-
