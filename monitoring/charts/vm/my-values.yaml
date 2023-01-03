@@ -20,7 +20,7 @@ victoria-metrics-single:
         cpu: "1"
         memory: 2Gi
     ingress:
-      enabled: false
+      enabled: true
       annotations:
         certmanager.k8s.io/cluster-issuer: monitoring-issuer
       hosts:
