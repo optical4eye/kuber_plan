@@ -12,7 +12,7 @@ spec:
   source:
     path: monitoring/charts/alertmanager
     repoURL: 'https://github.com/optical4eye/kuber_plan'
-    targetRevision: master
+    targetRevision: main
     helm:
       valueFiles:
         - my-values.yaml
