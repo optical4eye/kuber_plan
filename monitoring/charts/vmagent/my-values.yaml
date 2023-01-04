@@ -12,6 +12,12 @@ victoria-metrics-agent:
   remoteWriteUrls:
     - http://victoriametrics-victoria-metrics-single-server:8428/api/v1/write
 
+  rbac:
+    create: true
+    pspEnabled: false
+    annotations: {}
+    extraLabels: {}
+
   service:
     enabled: true
     servicePort: 8429
