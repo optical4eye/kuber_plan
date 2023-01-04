@@ -12,10 +12,7 @@ grafana:
         paths:
         - path: /
           pathType: Prefix
-    tls:
-      - hosts:
-        - grafana.cluster.local
-        secretName: grafana-tls
+    tls: []
   resources:
     limits:
       cpu: 500m
