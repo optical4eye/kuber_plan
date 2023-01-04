@@ -23,7 +23,7 @@ ingress:
   extraPaths: []
   tls: []
 
-resources: {}
+resources:
   limits:
     cpu: 100m
     memory: 256Mi
