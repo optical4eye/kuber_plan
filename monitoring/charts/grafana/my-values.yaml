@@ -23,6 +23,11 @@ ingress:
   extraPaths: []
   tls: []
 
+grafana.ini:
+  server:
+    domain: grafana.cluster.local
+    root_url: https://grafana.cluster.local
+
 resources:
   limits:
     cpu: 100m
