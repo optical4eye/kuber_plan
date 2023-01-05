@@ -1,59 +1,49 @@
-global:
-  imagePullSecrets: []
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    labels: {}
+    path: /
+    pathType: Prefix
+    hosts:
+      - grafana.cluster.local
+    extraPaths: []
+    tls: []
 
-image:
-  repository: grafana/grafana
-  # Overrides the Grafana image tag whose default is the chart appVersion
-  tag: "8.3.4"
-  sha: ""
-  pullPolicy: IfNotPresent
-  pullSecrets: []
+  grafana.ini:
+    server:
+      domain: grafana.cluster.local
+      root_url: https://grafana.cluster.local
 
-ingress:
-  enabled: true
-  ingressClassName: nginx
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  labels: {}
-  path: /
-  pathType: Prefix
-  hosts:
-    - grafana.cluster.local
-  extraPaths: []
-  tls: []
+  resources:
+    limits:
+      cpu: 100m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
 
-grafana.ini:
-  server:
-    domain: grafana.cluster.local
-    root_url: https://grafana.cluster.local
+  ##
+  persistence:
+    type: pvc
+    enabled: true
+    storageClassName: nfs-client
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+    extraPvcLabels: {}
 
-resources:
-  limits:
-    cpu: 100m
-    memory: 256Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
-
-##
-persistence:
-  type: pvc
-  enabled: true
-  storageClassName: nfs-client
-  accessModes:
-    - ReadWriteOnce
-  size: 5Gi
-  finalizers:
-    - kubernetes.io/pvc-protection
-  extraPvcLabels: {}
-
-datasources:
-  datasources.yaml:
-    apiVersion: 1
-    datasources:
-    - name: Victoria
-      type: prometheus
-      url: http://victoriametrics-victoria-metrics-single-server:8428
-      access: proxy
-      isDefault: true
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Victoria
+        type: prometheus
+        url: http://victoriametrics-victoria-metrics-single-server:8428
+        access: proxy
+        isDefault: true
