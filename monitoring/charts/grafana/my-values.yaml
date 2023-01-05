@@ -38,6 +38,24 @@ grafana:
       - kubernetes.io/pvc-protection
     extraPvcLabels: {}
 
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/default
+  dashboards:
+    default:
+      node-exporter:
+        gnetId: 1860
+        revision: 26
+        datasource: Victoria
   datasources:
     datasources.yaml:
       apiVersion: 1
