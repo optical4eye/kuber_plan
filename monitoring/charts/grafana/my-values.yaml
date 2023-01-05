@@ -4,7 +4,7 @@ global:
 image:
   repository: grafana/grafana
   # Overrides the Grafana image tag whose default is the chart appVersion
-  tag: "9.3.1"
+  tag: "8.3.4"
   sha: ""
   pullPolicy: IfNotPresent
   pullSecrets: []
