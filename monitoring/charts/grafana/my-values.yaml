@@ -54,7 +54,7 @@ grafana:
     default:
       node-exporter:
         gnetId: 1860
-        revision: 26
+        revision: 29
         datasource: Victoria
   datasources:
     datasources.yaml:
