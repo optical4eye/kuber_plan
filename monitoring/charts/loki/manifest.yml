@@ -871,7 +871,7 @@ spec:
       app.kubernetes.io/name: loki
       app.kubernetes.io/instance: loki
 ---
-# Source: loki/templates/monitoring/servicemonitor.yaml
+# Source: loki/templates/monitoring/servicemonitor.yml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
