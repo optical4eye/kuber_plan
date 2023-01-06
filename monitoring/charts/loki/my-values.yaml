@@ -14,8 +14,8 @@ rulerConfig:
 singleBinary:
   persistence:
     enabled: true
-    size: 30Gi
-    storageClass: efs
+    size: 5Gi
+    storageClass: nfs-client
   replicas: 1
   ingress:
     enabled: true
