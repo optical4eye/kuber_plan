@@ -17,32 +17,34 @@ singleBinary:
     size: 5Gi
     storageClass: nfs-client
   replicas: 1
-  ingress:
-    enabled: true
-    ingressClassName: "nginx"
-    annotations: {}
-    paths:
-      write:
-        - /api/prom/push
-        - /loki/api/v1/push
-      read:
-        - /api/prom/tail
-        - /loki/api/v1/tail
-        - /loki/api
-        - /api/prom/rules
-        - /loki/api/v1/rules
-        - /prometheus/api/v1/rules
-        - /prometheus/api/v1/alerts
-      singleBinary:
-        - /api/prom/push
-        - /loki/api/v1/push
-        - /api/prom/tail
-        - /loki/api/v1/tail
-        - /loki/api
-        - /api/prom/rules
-        - /loki/api/v1/rules
-        - /prometheus/api/v1/rules
-        - /prometheus/api/v1/alerts
 
-    hosts:
-      - loki.cluster.local
+ingress:
+  enabled: true
+  ingressClassName: "nginx"
+  annotations: {}
+  paths:
+    write:
+      - /api/prom/push
+      - /loki/api/v1/push
+    read:
+      - /api/prom/tail
+      - /loki/api/v1/tail
+      - /loki/api
+      - /api/prom/rules
+      - /loki/api/v1/rules
+      - /prometheus/api/v1/rules
+      - /prometheus/api/v1/alerts
+    singleBinary:
+      - /api/prom/push
+      - /loki/api/v1/push
+      - /api/prom/tail
+      - /loki/api/v1/tail
+      - /loki/api
+      - /api/prom/rules
+      - /loki/api/v1/rules
+      - /prometheus/api/v1/rules
+      - /prometheus/api/v1/alerts
+
+  hosts:
+    - loki.cluster.local
+  tls: []
