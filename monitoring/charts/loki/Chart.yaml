@@ -1,6 +1,6 @@
 apiVersion: v2
 name: loki
-description: loki
+description: Loki
 type: application
 version: 3.8.1
 appVersion: 2.7.0

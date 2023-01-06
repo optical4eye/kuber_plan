@@ -8,9 +8,9 @@ loki:
     retention_enabled: true
   limits_config:
     retention_period: 180d
-rulerConfig:
-  storage:
-    type: local
+  rulerConfig:
+    storage:
+      type: local
 singleBinary:
   persistence:
     enabled: true
