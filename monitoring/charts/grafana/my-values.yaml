@@ -3,7 +3,7 @@ grafana:
   adminPassword: strongpassword
 
   admin:
-    ## Name of the secret. Can be templated.
+    ## Name of the secret. Can be templated
     existingSecret: "grafana"
     userKey: admin-user
     passwordKey: admin-password
