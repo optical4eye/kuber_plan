@@ -13,9 +13,6 @@ spec:
     path: monitoring/charts/loki
     repoURL: 'https://github.com/optical4eye/kuber_plan'
     targetRevision: main
-    helm:
-      valueFiles:
-        - my-values.yaml
   project:  monitoring
   syncPolicy:
     automated:
