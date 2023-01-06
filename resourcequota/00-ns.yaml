@@ -1,0 +1,8 @@
+# namespace для тестов
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: quotas-ns
+  labels:
+    app: quotas-ns
