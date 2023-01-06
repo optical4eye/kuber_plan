@@ -902,14 +902,3 @@ spec:
         - replacement: "loki"
           targetLabel: cluster
       scheme: http
-
-NOTES:
-***********************************************************************
- Welcome to Grafana Loki
- Chart version: 3.8.1
- Loki version: 2.7.0
-***********************************************************************
-
-Installed components:
-* grafana-agent-operator
-* loki
