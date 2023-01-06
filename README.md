@@ -1,18 +1,36 @@
-# kuber_plan
+# Kuber plan
 
-### Инфо о поде
+## Список проектов
+<br />
+
+- [ArgoCD](./argo_cd) - Манифесты установки ArgoCD
+
+- [Persistent volume nfs](./dynamic-pv) - Создание динамического PV на nfs
+
+- [Helm chart](./helm) - Создание простого чарта и публикация его на github
+
+- [Monitoring](./monitoring) - Манифесты для развертывания мониторинга (victoriametrics, node-exporter, vm-agent)
+
+- [Resourcequota](./resourcequota) - Манифесты для создания квот
+
+<br />
+
+## Комманды
+<br />
+
+- ### Инфо о поде
 ```
 kubectl describe --namespace open-app pod open-app-5855bdb497-gdhcz
 ```
-### Логи пода
+- ### Логи пода
 ```
 kubectl logs --namespace open-app open-app-5855bdb497-gdhcz -f
 ```
-### Краткое инфо о поде
+- ### Краткое инфо о поде
 ```
 kubectl get pod --namespace open-app open-app-5855bdb497-gdhcz -o wide
 ```
-### convert file to base64
+- ### Convert file to base64
 ```
 gzip -c test.tx | base64 > test.txt.gz.b64
 
