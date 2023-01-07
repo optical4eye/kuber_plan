@@ -59,23 +59,23 @@ grafana:
         editable: false
         options:
           path: /var/lib/grafana/dashboards/default
-  dashboards: {}
-    # default:
-    #   node-exporter:
-    #     gnetId: 1860
-    #     revision: 29
-    #     datasource: Victoria
+  dashboards:
+    default:
+      node-exporter:
+        gnetId: 1860
+        revision: 29
+        datasource: Victoria
   datasources:
     datasources.yaml:
       apiVersion: 1
       datasources:
-      # - name: Victoria
-      #   type: prometheus
-      #   url: http://victoriametrics-victoria-metrics-single-server:8428
-      #   access: proxy
-      #   isDefault: true
-      - name: Loki
+      - name: Victoria
         type: prometheus
+        url: http://victoriametrics-victoria-metrics-single-server:8428
+        access: proxy
+        isDefault: true
+      - name: Loki
+        type: loki
         url: http://loki:3100
         access: proxy
         isDefault: false
