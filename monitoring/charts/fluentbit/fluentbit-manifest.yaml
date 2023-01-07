@@ -55,7 +55,6 @@ spec:
         prometheus.io/port: "2020"
         prometheus.io/path: /api/v1/metrics/prometheus
     spec:
-      priorityClassName: low-priority
       containers:
         - name: fluent-bit
           image: docker.io/fluent/fluent-bit:2.0.8
