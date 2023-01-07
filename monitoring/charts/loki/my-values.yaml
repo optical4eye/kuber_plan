@@ -11,6 +11,19 @@ loki:
   rulerConfig:
     storage:
       type: local
+  auth_enabled: false
+
+test:
+  enabled: false
+
+monitoring:
+  selfMonitoring:
+    enabled: false
+    grafanaAgent:
+      installOperator: false
+  lokiCanary:
+    enabled: false
+
 singleBinary:
   persistence:
     enabled: true

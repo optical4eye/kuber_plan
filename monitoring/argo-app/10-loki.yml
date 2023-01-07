@@ -10,7 +10,7 @@ spec:
     namespace: monitoring
     server: 'https://kubernetes.default.svc'
   source:
-    path: monitoring/charts/loki
+    path: monitoring/charts/loki/manifest
     repoURL: 'https://github.com/optical4eye/kuber_plan'
     targetRevision: main
   project:  monitoring
