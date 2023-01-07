@@ -12,6 +12,10 @@ helm template app  ./openresty-art/ > tets_deploy.yml
 ```
 helm install open-app --create-namespace --namespace open-app ./openresty-art/
 ```
+### Выгрузить default values в файл
+```
+helm show values ./openresty-art/ > origin_values.yaml
+```
 ### Запаковать chart
 ```
 helm package openresty-art/
