@@ -97,7 +97,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loki-headless
-  namespace: default
+  namespace: monitoring
   labels:
     helm.sh/chart: loki-3.8.1
     app.kubernetes.io/name: loki
@@ -340,7 +340,7 @@ apiVersion: monitoring.grafana.com/v1alpha1
 kind: MetricsInstance
 metadata:
   name: loki
-  namespace: default
+  namespace: monitoring
   labels:
     helm.sh/chart: loki-3.8.1
     app.kubernetes.io/name: loki
@@ -382,7 +382,7 @@ spec:
       path: /metrics
       relabelings:
         - sourceLabels: [job]
-          replacement: "default/$1"
+          replacement: "monitoring/$1"
           targetLabel: job
         - replacement: "loki"
           targetLabel: cluster
