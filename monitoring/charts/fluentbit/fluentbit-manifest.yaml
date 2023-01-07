@@ -33,9 +33,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluent-bit
-  annotations:
-    reloader.stakater.com/auto: "true"
-    configmap.reloader.stakater.com/reload: "fluent-bit-config"
   labels:
     k8s-app: fluent-bit-logging
     version: v1
@@ -50,10 +47,10 @@ spec:
         k8s-app: fluent-bit-logging
         version: v1
         kubernetes.io/cluster-service: "true"
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "2020"
-        prometheus.io/path: /api/v1/metrics/prometheus
+      # annotations:
+      #   prometheus.io/scrape: "true"
+      #   prometheus.io/port: "2020"
+      #   prometheus.io/path: /api/v1/metrics/prometheus
     spec:
       containers:
         - name: fluent-bit
