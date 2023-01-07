@@ -7,7 +7,7 @@ loki:
   compactor:
     retention_enabled: true
   limits_config:
-    retention_period: 180d
+    retention_period: 1d
   rulerConfig:
     storage:
       type: local
