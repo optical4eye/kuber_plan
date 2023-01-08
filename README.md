@@ -13,6 +13,8 @@
 
 - [Resourcequota](./resourcequota) - Манифесты для создания квот
 
+- [StatefullSet](./statefullset) - Пример создания StatefullSet
+
 <br />
 
 ## Команды

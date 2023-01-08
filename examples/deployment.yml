@@ -1,0 +1,80 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-template
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Тестовая страница</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+      <h1>Server name: SERVER</h1>
+    </body>
+    </html>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+  annotations:
+    kubernetes.io/change-cause: "update image to 1.23"
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+      - name: init-configs
+        image: busybox:1.36.0
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: SERVER
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+        command:
+          - 'sh'
+          - '-c'
+          - |
+            sed -e "s/SERVER/$SERVER/" \
+            /html-template/index.html | tee /html/index.html
+          - echo $HOSTNAME
+        volumeMounts:
+          - mountPath: /html-template
+            name: html-template
+          - mountPath: /html
+            name: html
+      containers:
+      - name: nginx-container
+        image: nginx:1.23
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "0.2"
+            memory: 100Mi
+          requests:
+            cpu: "0.1"
+            memory: 100Mi
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html/
+          name: html
+      volumes:
+      - name: html-template
+        configMap:
+          name: nginx-template
+      - name: html
+        emptyDir:
+          sizeLimit: 10Mi
