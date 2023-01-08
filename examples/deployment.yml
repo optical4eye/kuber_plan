@@ -61,6 +61,11 @@ spec:
         image: nginx:1.23
         ports:
         - containerPort: 80
+        startupProbe:
+          tcpSocket:
+            port: 80
+          failureThreshold: 5
+          periodSeconds: 2
         resources:
           limits:
             cpu: "0.2"

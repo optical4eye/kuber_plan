@@ -30,7 +30,7 @@ spec:
             - |
               sed -e "s/SERVER/$SERVER/" \
               /html-template/index.html | tee /html/index.html
-              cp /html-template/50x.html /html/50x.html
+            - cp /html-template/50x.html /html/50x.html
           volumeMounts:
             - mountPath: /html-template
               name: html-template
