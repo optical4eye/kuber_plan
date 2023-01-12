@@ -1,0 +1,13 @@
+{{- $fullname := .Values.fullnameOverride }}
+{{- $headlessService := printf "%s-headless" .Values.fullnameOverride | trunc 63 }}
+{{- $test1 := 3 }}
+{{- $test2 := 2 }}
+
+
+{{- $subbb := sub $test1 2 }}
+{{- $mull := mul $test1 $test2 }}
+{{- $addd := sub (add $test1 $test2) 1 }}
+
+subb: {{ $subbb }}
+mull: {{ $mull }}
+add: {{ $addd }}

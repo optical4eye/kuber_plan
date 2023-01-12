@@ -4,7 +4,7 @@ injector:
 server:
   image:
     repository: "hashicorp/vault"
-    tag: "1.8.4"
+    tag: "1.12.1"
     pullPolicy: IfNotPresent
   logLevel: "info"
   logFormat: "json"
@@ -20,7 +20,7 @@ server:
     enabled: true
     size: 3Gi
     mountPath: "/vault/data"
-    storageClass: "local-storage"
+    storageClass: "nfs-client"
     accessMode: ReadWriteOnce
     annotations: {}
   dev:
@@ -48,5 +48,5 @@ csi:
       cpu: 50m
       memory: 128Mi
     limits:
-      cpu: 50m
-      memory: 128Mi
+      cpu: 100m
+      memory: 256Mi
