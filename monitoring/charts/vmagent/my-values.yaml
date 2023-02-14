@@ -66,6 +66,13 @@ victoria-metrics-agent:
         - source_labels: [ __meta_kubernetes_endpoints_name ]
           regex: 'nexporter-prometheus-node-exporter'
           action: keep
+    - job_name: 'grafana'
+      kubernetes_sd_configs:
+        - role: endpoints
+      relabel_configs:
+        - source_labels: [ __meta_kubernetes_endpoints_name ]
+          regex: 'grafana'
+          action: keep
     - job_name: 'kube-state-metrics'
       static_configs:
         - targets: [ 'ksm-kube-state-metrics.monitoring.svc.cluster.local:8080' ]
