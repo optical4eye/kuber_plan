@@ -5,7 +5,7 @@ victoria-metrics-single:
   serviceAccount:
     create: false
   server:
-    retentionPeriod: 6h
+    retentionPeriod: 24h
     extraArgs:
       selfScrapeInterval: "15s"
       loggerLevel: "INFO"
